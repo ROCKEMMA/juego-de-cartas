@@ -336,7 +336,7 @@ button:focus {
     font-size: 2rem;
   }
   .mesa {
-    padding: 0 1.2rem;
+    padding: 0 1rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
