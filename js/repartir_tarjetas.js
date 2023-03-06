@@ -1,12 +1,13 @@
-import { tarjetasBarajadas } from "./tarjetas.js";
+import { tarjetas_barajeadas } from "./tarjetas.js";
 
-
-function repartir_tarjetas() {
+function repartir_tarjetas(nivel) {
 
     let mesa = document.querySelector("#mesa");
     mesa.innerHTML = "";
 
-    tarjetasBarajadas.forEach((elemento,indice)=>{
+    let baraja_de_tarjetas = tarjetas_barajeadas(nivel);
+
+    baraja_de_tarjetas.forEach((elemento)=>{
 
         let tarjeta = document.createElement("div");
         tarjeta.innerHTML = `

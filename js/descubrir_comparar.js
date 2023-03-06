@@ -1,7 +1,11 @@
+import { actualiza_contador } from "./contador.js";
+import { finalizar } from "./finalizar.js";
+
 /* DESCUBRIR LOS ELEMENTOS */
 function descubrir (){
-    var descubiertas;
-    var totalDescubiertas;
+    let descubiertas;
+    let totalDescubiertas;
+    let tarjetasPendientes; 
     
     // Se consulta en el DOM el total de cartas levantadas
     totalDescubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
@@ -13,6 +17,9 @@ function descubrir (){
     
     // Si agrega la clase descubireta para levantar la siguiente carta
     this.classList.add("descubierta");
+
+    // AGREGANDO SONIDO
+    document.querySelector("#sonido-carta").cloneNode().play();
 
     // Se consulta la cantidad de cartas destapadas nuevamente
     descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
@@ -26,6 +33,12 @@ function descubrir (){
     // si en el proceso de descubrir cartas ya se tienen dos tarjetas
     // para comparar, ejecutamos la función comparar tarjetas.
     comparar(descubiertas);
+    actualiza_contador();
+
+    tarjetasPendientes = document.querySelectorAll(".tarjeta:not(.acertada)");
+    if (tarjetasPendientes.length === 0){
+        setTimeout(finalizar,1000);
+    }
 
 }
 
@@ -33,24 +46,33 @@ function descubrir (){
 function comparar(tarjetasAComparar){
     // Validación de la cartas descubiertas
     if(tarjetasAComparar[0].textContent === tarjetasAComparar[1].textContent){
-        console.log('Correcto');
         acierto(tarjetasAComparar);
     }else{
         error(tarjetasAComparar);
     }
 }
 
-// Acción que se realizará si las dos cartas son iguales
+/* 
+    ACCIÓN SE LAS CARTAS COOINCIDEN
+*/
 function acierto (lasTajetas){
     lasTajetas.forEach((tarjeta)=>{
         tarjeta.classList.add("acertada");
     });
+    document.querySelector("#sonido-acierto").play();
+
 }
 
+/* 
+    ACCIÓN SE LAS CARTAS NO COOINCIDEN
+*/
 function error(lasTajetas){
     lasTajetas.forEach((tarjeta)=>{
         tarjeta.classList.add("error");
     });
+
+    document.querySelector("#sonido-error").play();
+
 
     setTimeout(() => {
         lasTajetas.forEach((tarjeta)=>{
@@ -58,7 +80,6 @@ function error(lasTajetas){
         });    
     }, 1000);
 
-    
 }
 
 export {descubrir};
