@@ -328,7 +328,7 @@ button:focus {
 
 
 /* Sección movil */
-@media (max-width: 375px) {
+@media (max-width: 360px) {
   .cabecera{
     flex-wrap: wrap;
   }
@@ -336,7 +336,7 @@ button:focus {
     font-size: 2rem;
   }
   .mesa {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
