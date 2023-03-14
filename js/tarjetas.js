@@ -2,9 +2,8 @@ function tarjetas_barajeadas(nivel){
     
     let tarjetas_por_nivel = [
         ["🍟","🥞","🍔"],
-        ["🍟","🥞","🥯","🥐"],
         ["🍟","🥞","🥯","🥐","🍕","🌭"],
-        ["🍟","🥞","🥯","🥐","🍕","🌭","🍞","🥨"]
+        ["🍟","🥞","🥯","🥐","🍕","🌭","🍞"],
     ];
     
     let totalTarjetas = tarjetas_por_nivel[nivel].concat(tarjetas_por_nivel[nivel]);

@@ -25,12 +25,12 @@ function inciarCronometro(){
     
         document.querySelector('#minutos').innerText = minutos_texto;
         document.querySelector('#segundos').innerText = segundos_texto;
+
+        if(segundos >= 10){
+            document.querySelector(".game-over").classList.add("mostrar");
+            console.log('Tiempo limite');
+        }
+
     }
-
-
     setInterval(actualizaContador,1000);
 }
-
-
-
-inciarCronometro();

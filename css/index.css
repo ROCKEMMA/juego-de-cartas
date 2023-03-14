@@ -1,111 +1,50 @@
-body {
-  font-size: 2rem;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.bienvenida {
-  display: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: white;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  z-index: 1;
-}
-
-.bienvenida.visible{
-  display: flex;
-}
-
-.bienvenida h1 {
-  font-family: var(--font-display);
-  text-transform: uppercase;
-  font-size: 5rem;
-  margin-top: 0;
-}
-
-.bienvenida-botones {
-  display: flex;
-}
-
-.bienvenida button {
-  padding: 1rem 3rem;
-  margin: 0 1rem;
-  min-width: 20rem;
-}
-
-.cabecera {
-  padding: 0.5rem 2rem;
-  background: white;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-
-
-.cabecera-titulo {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  line-height: 1;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.cabecera-num {
-  font-family: var(--font-display);
-  color: var(--hotpink);
-  font-weight: 400;
-  font-size: 3rem;
-  line-height: 0.9;
-}
-
-.contadores {
-  display: flex;
-}
-
-.contador-item {
-  margin-right: 2rem;
-}
-
 main {
-  flex-grow: 1;
+/*   position: relative; */
+  
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  position: relative;
+  flex-grow: 1;
 }
+.mensaje-inicio {
+  width: 90%;
+  
+  align-self: center;
+  margin-top: 4rem;
+  display: none;
+}
+.mensaje-inicio p {
+  color: #fff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.activar {
+  display: block;
+}
+
 
 .mesa {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: center;
   max-width: 56rem;
   margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  
 }
 
 .tarjeta {
   width: 6rem;
   height: 6rem;
-  margin: 0.5rem;
   border-radius: 0.3em;
   background-image: var(--gradient);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25), 4px 4px 10px rgba(0, 0, 0, 0.2);
-  position: relative;
   transition: 0.3s;
-  cursor: pointer;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  
+  cursor: pointer;
+  position: relative;
 }
 
 .tarjeta__contenido {
@@ -326,22 +265,3 @@ button:focus {
   font-weight: 300;
 }
 
-
-/* Sección movil */
-@media (max-width: 360px) {
-  .cabecera{
-    flex-wrap: wrap;
-  }
-  .cabecera-num {
-    font-size: 2rem;
-  }
-  .mesa {
-    padding: 0 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: center;
-    max-width: 56rem;
-    margin: auto;
-  }
-}

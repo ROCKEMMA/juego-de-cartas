@@ -17,5 +17,10 @@ body {
   background: var(--bg);
   font-family: var(--font);
   background-color: rgb(13, 14, 22);
+
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
   

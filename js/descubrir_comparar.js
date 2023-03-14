@@ -1,8 +1,14 @@
 import { actualiza_contador } from "./contador.js";
 import { finalizar } from "./finalizar.js";
+import { desabilitar_mensaje_inicial } from "./mensaje-inicial.js";
 
 /* DESCUBRIR LOS ELEMENTOS */
 function descubrir (){
+
+    desabilitar_mensaje_inicial();
+
+    inciarCronometro();
+
     let descubiertas;
     let totalDescubiertas;
     let tarjetasPendientes; 

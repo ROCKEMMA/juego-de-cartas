@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="shortcut icon" href="#" />
 
     <!-- SECCIÓN DE ESTILOS -->
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/config.css">
-</head>
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/modals.css">
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/config.css" />
+  </head>
 
-<body>
+  <body>
+    <header class="cabecera">
+      <div class="contadores">
+        <!-- Contador de movimientos -->
+        <div class="contador-item">
+          <h4 class="cabecera-titulo">Movimientos</h4>
+          <div class="cabecera-num">
+            <span id="mov">00</span>/<span id="mov-total">20</span>
+          </div>
+        </div>
 
-    <div id="bienvenida" class="bienvenida">
-        <h1>👋 ¡Hola! 👋</h1>
-        <div class="bienvenida-botones">
-          <button id="juego-normal">¡Quiero jugar!</button>
-          <button id="juego-relax">Modo relax</button>
+        <!-- Controlador de tiempo -->
+        <div id="cronometro" class="contador-item">
+          <h4 class="cabecera-titulo">Tiempo</h4>
+          <div class="cabecera-num">
+            <span id="minutos">00</span>:<span id="segundos">00</span>
+          </div>
         </div>
       </div>
-      <header class="cabecera">
-        <div class="contadores">
-          <div class="contador-item">
-            <h4 class="cabecera-titulo">Movimientos</h4>
-            <div class="cabecera-num">
-              <span id="mov">00</span>/<span id="mov-total">20</span>
-            </div>
-          </div>
-          <div id="cronometro" class="contador-item">
-            <h4 class="cabecera-titulo">Tiempo</h4>
-            <div class="cabecera-num">
-              <span id="minutos">00</span>:<span id="segundos">00</span>
-            </div>
-          </div>
+
+      <!-- Sección de niveles -->
+      <div class="nivel">
+        <h4 class="cabecera-titulo">Nivel</h4>
+        <div class="cabecera-num"><span id="nivel">01</span></div>
+      </div>
+    </header>
+
+    <main>
+      <div class="mensaje-inicio activar">
+        <p>
+          El juego inicara cuando destapes la primera carta
+        </p>
+      </div>
+      <!-- Mesa de cartas -->
+      <div id="mesa" class="mesa"></div>
+
+      <!-- Modal nivel completado -->
+      <div id="subeNivel" class="sube-nivel">
+        <div class="modal">
+          <h2>¡Muy bien!</h2>
+          <button id="subir">Siguiente nivel</button>
+          <button class="reiniciar">Reiniciar</button>
         </div>
-        <div class="nivel">
-          <h4 class="cabecera-titulo">Nivel</h4>
-          <div class="cabecera-num"><span id="nivel">01</span></div>
-        </div>
-        <button id="control-nivel" class="control-nivel">…</button>
-      </header>
-      <main>
-        <div id="mesa" class="mesa"></div>
-        <div id="subeNivel" class="sube-nivel">
-          <div class="modal">
-            <h2>¡Muy bien!</h2>
-            <button id="subir">Siguiente nivel</button>
-            <button class="reiniciar">Reiniciar</button>
-          </div>
-        </div>
-        <div id="gameOver" class="game-over">
-          <div class="modal">
-            <h2>¡Oh no!</h2>
-            <p>Te has quedado sin movimientos 😭</p>
-            <button class="reiniciar">Reiniciar</button>
-          </div>
-        </div>
-        <div id="timeOver" class="game-over">
-          <div class="modal">
-            <h2>¡Oh no!</h2>
-            <p>Te has quedado sin tiempo 😭</p>
-            <button class="reiniciar">Reiniciar</button>
-          </div>
-        </div>
-        <div id="endGame" class="end-game">
-          <div class="modal">
-            <h2>¡Enhorabuena!</h2>
-            <p>Has superado todos los niveles 🏆</p>
-            <button class="reiniciar">Reiniciar</button>
-          </div>
-        </div>
-      </main>
-      <div class="selecciona-nivel">
-        <button id="cierra-niveles" class="cierra-niveles">&times;</button>
-        <ul></ul>
       </div>
 
-      <!-- ETIQUETAS DE SONIDO -->
-      <audio
+      <!-- Modal sin movimientos disponibles -->
+      <div id="gameOver" class="game-over">
+        <div class="modal">
+          <h2>¡Oh no!</h2>
+          <p>Te has quedado sin movimientos 😭</p>
+          <button class="reiniciar">Reiniciar</button>
+        </div>
+      </div>
+
+      <!-- Modal sin tiempo disponibles -->
+      <div id="timeOver" class="game-over">
+        <div class="modal">
+          <h2>¡Oh no!</h2>
+          <p>Te has quedado sin tiempo 😭</p>
+          <button class="reiniciar">Reiniciar</button>
+        </div>
+      </div>
+
+      <!-- Modal se completan todos los modales -->
+      <div id="endGame" class="end-game">
+        <div class="modal">
+          <h2>¡Enhorabuena!</h2>
+          <p>Has superado todos los niveles 🏆</p>
+          <button class="reiniciar">Reiniciar</button>
+        </div>
+      </div>
+    </main>
+
+    <div class="selecciona-nivel">
+      <button id="cierra-niveles" class="cierra-niveles">&times;</button>
+      <ul></ul>
+    </div>
+
+    <!-- ETIQUETAS DE SONIDO -->
+    <audio
       src="sonidos/acierto.mp3"
       class="sonido"
       id="sonido-acierto"
       preload="auto"
-      ></audio>
-      <audio
-        src="sonidos/error.mp3"
-        class="sonido"
-        id="sonido-error"
-        preload="auto"
-      ></audio>
-      <audio
-        src="sonidos/carta.mp3"
-        class="sonido"
-        id="sonido-carta"
-        preload="auto"
-      ></audio>
+    ></audio>
+    <audio
+      src="sonidos/error.mp3"
+      class="sonido"
+      id="sonido-error"
+      preload="auto"
+    ></audio>
+    <audio
+      src="sonidos/carta.mp3"
+      class="sonido"
+      id="sonido-carta"
+      preload="auto"
+    ></audio>
 
     <script src="./js/index.js" type="module"></script>
     <script src="./js/cronometro.js"></script>
     <script src="./js/cambia_nivel.js" type="module"></script>
-</body>
-
+  </body>
 </html>
