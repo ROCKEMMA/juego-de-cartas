@@ -1,45 +1,32 @@
-import { actualiza_contador } from "./contador.js";
-import { finalizar } from "./finalizar.js";
 import { desabilitar_mensaje_inicial } from "./mensaje-inicial.js";
+import { actualiza_movimientos } from "./contador_movimientos.js";
+import { finalizar } from "./finalizar.js"; // ?
 
 /* DESCUBRIR LOS ELEMENTOS */
-function descubrir (){
+function descubrir_carta (){
 
     desabilitar_mensaje_inicial();
-
-    inciarCronometro();
-
-    let descubiertas;
-    let totalDescubiertas;
-    let tarjetasPendientes; 
     
-    // Se consulta en el DOM el total de cartas levantadas
-    totalDescubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
+    segundos == 0 ? iniciar_cronometro() : false;
+
+    let total_tarjetas_descubiertas;
+    let tarjetas_descubiertas_no_acertadas;
+    let tarjetasPendientes;
     
-    // Si el total de cartas es superior a 1 el programa se detendrá
-    if(totalDescubiertas.length > 1){
+    total_tarjetas_descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
+    if(total_tarjetas_descubiertas.length > 1){
         return;
+    }else {
+        this.classList.add("descubierta");
     }
     
-    // Si agrega la clase descubireta para levantar la siguiente carta
-    this.classList.add("descubierta");
-
-    // AGREGANDO SONIDO
-    document.querySelector("#sonido-carta").cloneNode().play();
-
-    // Se consulta la cantidad de cartas destapadas nuevamente
-    descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
-
-    // si el total de cartas destapadas es menor a 2 el prgrama se
-    // Detendra, para poder levantar una carta más.
-    if(descubiertas.length < 2){
+    tarjetas_descubiertas_no_acertadas = document.querySelectorAll(".descubierta:not(.acertada)");
+    if(tarjetas_descubiertas_no_acertadas.length < 2){
         return;
     }
 
-    // si en el proceso de descubrir cartas ya se tienen dos tarjetas
-    // para comparar, ejecutamos la función comparar tarjetas.
-    comparar(descubiertas);
-    actualiza_contador();
+    comparar_tarjetas(tarjetas_descubiertas_no_acertadas);
+    actualiza_movimientos();
 
     tarjetasPendientes = document.querySelectorAll(".tarjeta:not(.acertada)");
     if (tarjetasPendientes.length === 0){
@@ -48,44 +35,42 @@ function descubrir (){
 
 }
 
-// FUNCIÓN DESCUBRIR TARJETAS
-function comparar(tarjetasAComparar){
-    // Validación de la cartas descubiertas
-    if(tarjetasAComparar[0].textContent === tarjetasAComparar[1].textContent){
-        acierto(tarjetasAComparar);
+
+function comparar_tarjetas(tarjetas_a_comparar){
+    if(tarjetas_a_comparar[0].textContent === tarjetas_a_comparar[1].textContent){
+        acierto(tarjetas_a_comparar);
     }else{
-        error(tarjetasAComparar);
+        error(tarjetas_a_comparar);
     }
 }
 
-/* 
-    ACCIÓN SE LAS CARTAS COOINCIDEN
-*/
-function acierto (lasTajetas){
-    lasTajetas.forEach((tarjeta)=>{
+function acierto (tarjetas){
+    tarjetas.forEach((tarjeta)=>{
         tarjeta.classList.add("acertada");
     });
-    document.querySelector("#sonido-acierto").play();
-
+    // document.querySelector("#sonido-acierto").play();
 }
 
-/* 
-    ACCIÓN SE LAS CARTAS NO COOINCIDEN
-*/
-function error(lasTajetas){
-    lasTajetas.forEach((tarjeta)=>{
+function error(tajetas){
+    tajetas.forEach((tarjeta)=>{
         tarjeta.classList.add("error");
     });
-
-    document.querySelector("#sonido-error").play();
-
+    // document.querySelector("#sonido-error").play();
 
     setTimeout(() => {
-        lasTajetas.forEach((tarjeta)=>{
+        tajetas.forEach((tarjeta)=>{
             tarjeta.classList.remove("descubierta");
-        });    
+            tarjeta.classList.remove("error");
+        });
+        console.log('me sigo ejecutando');
     }, 1000);
 
 }
 
-export {descubrir};
+export {descubrir_carta};
+
+
+
+
+
+

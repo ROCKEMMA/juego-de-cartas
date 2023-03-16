@@ -1,4 +1,4 @@
-import { iniciar } from "./index.js";
+import { iniciar_nivel } from "./index.js";
 
 
 // nivel incial
@@ -17,7 +17,7 @@ function cargaNuevoNivel(){
     if(nivel< 2){
         subeNivel();
         actualizanivel();
-        iniciar(nivel);    
+        iniciar_nivel(nivel);    
     }else{
         document.querySelector("#endGame").classList.add("visible");
     }
