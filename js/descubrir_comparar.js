@@ -59,10 +59,9 @@ function error(tajetas){
 
     setTimeout(() => {
         tajetas.forEach((tarjeta)=>{
+            //tarjeta.classList.remove("error");
             tarjeta.classList.remove("descubierta");
-            tarjeta.classList.remove("error");
         });
-        console.log('me sigo ejecutando');
     }, 1000);
 
 }
