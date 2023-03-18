@@ -1,17 +1,12 @@
-import { desabilitar_mensaje_inicial } from "./mensaje-inicial.js";
 import { actualiza_movimientos } from "./contador_movimientos.js";
 import { finalizar } from "./finalizar.js"; // ?
 
-/* DESCUBRIR LOS ELEMENTOS */
 function descubrir_carta (){
 
-    desabilitar_mensaje_inicial();
-    
-    segundos == 0 ? iniciar_cronometro() : false;
-
     let total_tarjetas_descubiertas;
-    let tarjetas_descubiertas_no_acertadas;
     let tarjetasPendientes;
+    let tarjetas_descubiertas_no_acertadas;
+    
     
     total_tarjetas_descubiertas = document.querySelectorAll(".descubierta:not(.acertada)");
     if(total_tarjetas_descubiertas.length > 1){
@@ -59,7 +54,7 @@ function error(tajetas){
 
     setTimeout(() => {
         tajetas.forEach((tarjeta)=>{
-            //tarjeta.classList.remove("error");
+            tarjeta.classList.remove("error");
             tarjeta.classList.remove("descubierta");
         });
     }, 1000);

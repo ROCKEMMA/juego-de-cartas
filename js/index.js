@@ -20,13 +20,19 @@ function iniciar_nivel(nivel){
         tarjeta.addEventListener("click", descubrir_carta);
     });
 }
-
-function reinicia_nivel(nivel){
+function reiniciar_partida(nivel){
     nivel = 0;
     iniciar_nivel(nivel);
 }
-
+function iniciar_partida(){
+    iniciar_cronometro()
+    document.querySelector(".modal-iniciar").classList.remove("activar");
+}
 
 iniciar_nivel(nivel);
 
-export { iniciar_nivel, reinicia_nivel };
+let boton_iniciar = document.querySelector(".btn-inicio");
+boton_iniciar.addEventListener("click",iniciar_partida);
+
+
+export { iniciar_nivel, reiniciar_partida };
